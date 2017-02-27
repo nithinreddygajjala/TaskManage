@@ -1,4 +1,4 @@
-# tr-clone
+# Task manager
 # Steps to run :
 # 1. Clone this Repository to your local machine.
 # 2. Open npm the run 'npm init' command to install the node_modules.
