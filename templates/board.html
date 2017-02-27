@@ -1,0 +1,28 @@
+<div class="board-selector">
+    <div class="board-link button" *ngFor="let board of boards">
+        <div (click)="boardSelect(board.id)">{{ board.title }}</div>
+    </div>
+</div>
+<div class="current-board" *ngIf="selectedBoard">
+    <h2>{{ selectedBoard.title }}</h2>
+        <div class="container"  >
+        <div class="bag" [dragula]='"list-bag"' [dragulaModel]='selectedBoard.lists'>
+            <div class="list two columns" *ngFor="let list of selectedBoard.lists">
+                <span class="drag-handle">&#x21d4;</span>
+                <h4><ndv-area [title]="'title'" [permission]="checkPermissions(perm)" [placeholder]='list.title' (onSave)='saveList($event, list)'></ndv-area></h4>
+                <ul class="cards" [dragula]='"card-bag"' [dragulaModel]='list.cards'>
+                    <li class="card"     *ngFor="let card of list.cards">
+                        <span class="drag-handle-card">&#x2719;</span><ndv-area [title]="'title'" [permission]="checkPermissions(perm)" [placeholder]='card.title' (onSave)='saveCard($event, card, list)'></ndv-area>
+                        <!--<span class="drag-handle-card">&#x2719;</span>{{ card.title }}-->
+                    </li>
+                </ul>
+                <ul>
+                    <li (click)="addCardToList(list)" class="button">Add Card</li>
+                </ul>
+            </div>
+        </div>
+            <div class="list two columns">
+                <h4 class="button" (click)="addNewList()">Add List</h4>
+            </div>
+        </div>
+</div>

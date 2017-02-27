@@ -1,0 +1,157 @@
+<div class='container'>
+<div class='row'>
+<div class='col-md-5' >
+
+</div>
+
+<div class='col-md-5' >
+  <br>
+<h3> {{id}}</h3>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Add List</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <br>
+      <div class='container'>
+        <div class='row'>
+          <div class='col-md-2'>
+          </div>
+          <div class='col-md-8'>
+
+            <input type='text' [(ngModel)]='testdata'class='form-control' placeholder="Enter the List Name">
+
+            <button data-dismiss="modal" class='btn btn-secondary btn-sm'  (click)='getData(textdata)'>Add </button>
+
+
+          </div>
+
+          <div class='col-md-2'>
+          </div>
+
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class='col-md-2' >
+
+</div>
+
+</div>
+</div>
+<br>
+<!-- the lists -->
+<div class='container'>
+  <div class='row'>
+
+<div *ngFor='let item of name;let i=index '>
+
+
+
+
+<div class='col-md-1'>
+</div>
+<div class='col-md-11'>
+<div  class="card  "   style="width: 15rem;">
+  <br>
+<div class='container'> <div class='row'> <div class='col-md-9'><h4>{{item.name}}</h4></div><div class='col-md-3'><button class='btn btn-sm btn-danger' (click)='remove(item.name)'>-</button></div></div></div>
+
+
+<form (ngSubmit)='cardClick(i)'>
+<hr>
+    <div class='form-group'>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-9'>
+       <input type='text'  [ngModelOptions]="{standalone: true}"  [(ngModel)]='cardname'  required placeholder='add card' class='form-control'  >
+     </div>
+       <div class='col-md-3'>
+       <button type='submit' class='form-group'  class='btn btn-sm btn-success'>+</button>
+</div>
+     </div>
+       </div>
+        </div>
+
+
+  </form>
+<div class='wrapper'  >
+
+  <div class="card-block " [dragula]='"nested-bag"' [dragulaModel]='item.arr'>
+    <div *ngFor='let temp of item.arr' class='container'>
+
+
+<div class="card"  (click)='test1(temp)'  >
+
+
+<div class="btn btn-primary" data-toggle="modal" id="1" data-target="#edit-modal"  >
+  {{temp}}
+
+
+ </div>
+
+
+</div>
+
+<div id="edit-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title" id="myModalLabel">{{modalpass}}</h4>
+                </div>
+                <div class="modal-body edit-content">
+                  <div class='container'>
+                    <div class='row'>
+
+                      <div class='col-md-7'>
+                    <textarea [(ngModel)]='des' placeholder='Card Description' class='form-control'>
+                    </textarea>
+                    <br>
+                    due date: {{curdate}}
+                  </div>
+                    <div class='col-md-5'>
+                      <button class='btn btn-block btn-primary' data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." disabled>Members</button>
+                      <!-- for spacing -->
+                      <div class="col-sm-1 col-xs-1 col-md-1 col-lg-1"></div>
+                      <input type='date' [(ngModel)]='curdate'class='form-control' placeholder='Due Date'>
+                      <div class="col-sm-1 col-xs-1 col-md-1 col-lg-1"></div>
+                      <button class='btn btn-primary' disabled>Labels</button>
+                      <div class="col-sm-1 col-xs-1 col-md-1 col-lg-1"></div>
+                      <button class='btn btn-primary' disabled>Attachments</button>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" (click)='savedata(modalpass)'>Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+   </div>
+
+
+
+  </div>
+
+</div>
+</div>
+
+
+<br>
+<br>
+    </div>
+
+</div>
+
+</div>

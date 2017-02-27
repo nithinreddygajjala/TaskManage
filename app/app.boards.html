@@ -1,0 +1,89 @@
+
+
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myLargeModalLabel">CREATE BOARD</h4>
+      </div>
+      <br >
+      <div class='container'>
+      <div class='row'>
+      <div class='col-md-1'>
+      </div>
+      <div class='col-md-10'>
+      <div class='form-group'>
+      <input type='text' [(ngModel)]='boardname' placeholder='Enter the Board name' name=''  class='form-control' required>
+      <br>
+      <textarea class='form-control' [(ngModel)]='boarddes' placeholder='Enter the Board Description'></textarea>
+      <br>
+      <button  class='btn btn-default' data-dismiss='modal' (click)='boardTitle()'> Add </button>
+    </div>
+
+  </div>
+    <div class='col-md-1'>
+    </div>
+
+  </div>
+</div>
+
+    </div>
+  </div>
+</div>
+<br>
+
+<div class='container'>
+<div class='row'>
+<div class='col-md-2'>
+</div>
+<div class="card col-md-8" style="width: 15rem;">
+
+  <div class="card-block">
+    <h4 class="card-title">Create Board</h4>
+    <p class="card-text"></p>
+<button class='btn btn-success' data-toggle="modal" data-target=".bd-example-modal-lg">+</button>  Create Board
+  </div>
+  <span class="glyphicons glyphicons-plus"> </span>
+
+
+
+  </div>
+<div class='col-md-2'></div>
+</div>
+<br>
+<br>
+<br>
+</div>
+<div class='container'>
+<div class='row' >
+
+<div   *ngFor="let item of arr">
+<div class='col-md-1'></div>
+<div class="col-md-10">
+  <div class=" card " style="width: 15rem; overflow:hidden; white-space:nowrap;  text-overflow:ellipsis;">
+
+    <div class="card-block" style="width: 15rem; overflow:hidden; white-space:nowrap;  text-overflow:ellipsis;">
+      <h4 class="card-title" style="width: 15rem; overflow:hidden; white-space:nowrap;  text-overflow:ellipsis;"><a (click)='onClick(item)'  [routerLink]="['/dashboard', item.bname]" > {{item.bname}}</a></h4>
+      <p class="card-text" style="width: 15rem; overflow:hidden; white-space:nowrap;  text-overflow:ellipsis;">{{item.boarddes}}</p>
+      <button class='btn btn-sm btn-danger' (click)='remove(item.bname)'>Remove</button>
+
+
+
+
+    </div>
+
+
+  </div>
+
+</div>
+<div class='col-md-1'></div>
+<br>
+</div>
+
+</div>
+</div>
+
+
+
+<router-outlet></router-outlet>
